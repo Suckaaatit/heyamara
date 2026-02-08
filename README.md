@@ -1,3 +1,18 @@
+TECH STACK
+
+- **Language**: TypeScript (compiled to Node.js)
+- **Runtime**: Node.js
+- **API**: Express
+- **File watching**: Chokidar
+- **LLM**: Ollama (local, HTTP)
+- **HTTP client**: Axios
+- **Notifications**: node-notifier
+- **Logging**: Winston
+- **Persistence**: JSON file store (`data/rules.db`)
+- **UI**: Vanilla HTML/CSS/JS (local inspector)
+
+
+
 snap shots
 
 <img width="800" height="406" alt="image" src="https://github.com/user-attachments/assets/b25af834-794c-4ead-9377-920d26b286a4" />
