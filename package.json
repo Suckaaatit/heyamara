@@ -1,0 +1,17 @@
+{
+  "name": "kimi-agent-watcher-daemon-plan",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "watcher-daemon"
+  ],
+  "scripts": {
+    "start": "npm --workspace watcher-daemon run start",
+    "build": "npm --workspace watcher-daemon run build",
+    "typecheck": "npm --workspace watcher-daemon run typecheck",
+    "test": "npm --workspace watcher-daemon run test"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

@@ -1,0 +1,15 @@
+node_modules/
+**/node_modules/
+logs/
+**/logs/
+data/
+**/data/
+watched/
+**/watched/
+.demo-run/
+**/.demo-run/
+*.log
+*.tmp
+.env
+.env.local
+.DS_Store

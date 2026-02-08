@@ -1,0 +1,169 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.RuleEngine = void 0;
+const path_1 = __importDefault(require("path"));
+const Logger_1 = __importDefault(require("../logger/Logger"));
+const security_1 = require("../utils/security");
+class RuleEngine {
+    ruleStore;
+    securityValidator;
+    stats = { eventsObserved: 0, rulesEvaluated: 0, matches: 0 };
+    recentMatches = [];
+    recentMatchLimit;
+    thresholdWindows = new Map();
+    watchDir;
+    constructor(ruleStore, watchDir, recentMatchLimit = 100, securityValidator) {
+        this.ruleStore = ruleStore;
+        this.watchDir = watchDir;
+        this.recentMatchLimit = recentMatchLimit;
+        this.securityValidator = securityValidator || new security_1.SecurityValidator();
+    }
+    async init() {
+        await this.ruleStore.init();
+    }
+    async evaluateEvent(event) {
+        this.stats.eventsObserved++;
+        Logger_1.default.info('Event observed', { type: event.type, path: event.path, timestamp: event.timestamp });
+        const absolutePath = path_1.default.resolve(this.watchDir, event.path);
+        const isValid = await this.securityValidator.validateFilePath(absolutePath);
+        if (!isValid) {
+            Logger_1.default.warn('Security: Skipping evaluation for invalid path', { path: event.path });
+            return [];
+        }
+        const rules = await this.ruleStore.getEnabledRules();
+        this.stats.rulesEvaluated += rules.length;
+        const matches = [];
+        for (const rule of rules) {
+            const match = this.evaluateRule(event, rule);
+            if (match) {
+                matches.push(match);
+                this.stats.matches++;
+                await this.ruleStore.recordMatch(rule.id);
+                this.recordMatch(match);
+                Logger_1.default.info('Rule matched', { ruleId: rule.id, ruleName: rule.name, type: rule.type });
+            }
+        }
+        return matches;
+    }
+    evaluateRule(event, rule) {
+        if (!this.matchesFilter(event, rule.match)) {
+            Logger_1.default.debug('Rule filter did not match', { ruleId: rule.id, ruleName: rule.name, path: event.path });
+            return null;
+        }
+        if (rule.type === 'pattern') {
+            const reason = `File ${event.path} was ${event.type}`;
+            const summary = reason;
+            return {
+                ruleId: rule.id,
+                ruleName: rule.name,
+                ruleType: rule.type,
+                timestamp: Date.now(),
+                summary,
+                reason,
+                path: event.path,
+                eventType: event.type,
+            };
+        }
+        if (rule.type === 'threshold') {
+            const now = Date.now();
+            const windowMs = rule.windowSeconds * 1000;
+            const timestamps = this.thresholdWindows.get(rule.id) || [];
+            timestamps.push(now);
+            const filtered = timestamps.filter((t) => now - t <= windowMs);
+            this.thresholdWindows.set(rule.id, filtered);
+            if (filtered.length >= rule.count) {
+                // Reset window after match to prevent rapid repeat alerts
+                this.thresholdWindows.set(rule.id, []);
+                const filterSummary = this.describeFilter(rule.match);
+                const reason = `${filtered.length} ${filterSummary} in the last ${rule.windowSeconds}s (threshold: ${rule.count})`;
+                const summary = reason;
+                return {
+                    ruleId: rule.id,
+                    ruleName: rule.name,
+                    ruleType: rule.type,
+                    timestamp: now,
+                    summary,
+                    reason,
+                    count: filtered.length,
+                    windowSeconds: rule.windowSeconds,
+                };
+            }
+        }
+        return null;
+    }
+    matchesFilter(event, match) {
+        const normalizedPath = event.path.toLowerCase();
+        if (match.pathExcludes && match.pathExcludes.length > 0) {
+            const excluded = match.pathExcludes.some((exc) => normalizedPath.includes(exc.toLowerCase()));
+            if (excluded)
+                return false;
+        }
+        if (match.pathIncludes && match.pathIncludes.length > 0) {
+            const included = match.pathIncludes.some((inc) => normalizedPath.includes(inc.toLowerCase()));
+            if (!included)
+                return false;
+        }
+        if (match.extensions && match.extensions.length > 0) {
+            const extension = path_1.default.extname(event.path).toLowerCase();
+            const allowed = match.extensions.map((ext) => ext.toLowerCase());
+            if (!allowed.includes(extension))
+                return false;
+        }
+        if (match.eventTypes && match.eventTypes.length > 0) {
+            if (!match.eventTypes.includes(event.type))
+                return false;
+        }
+        return true;
+    }
+    describeFilter(match) {
+        const parts = [];
+        if (match.extensions && match.extensions.length > 0) {
+            parts.push(`files with ${match.extensions.join(', ')}`);
+        }
+        if (match.pathIncludes && match.pathIncludes.length > 0) {
+            parts.push(`paths including ${match.pathIncludes.join(', ')}`);
+        }
+        if (match.eventTypes && match.eventTypes.length > 0) {
+            parts.push(`events ${match.eventTypes.join(', ')}`);
+        }
+        if (parts.length === 0) {
+            return 'events';
+        }
+        return parts.join(' and ');
+    }
+    recordMatch(match) {
+        this.recentMatches.push(match);
+        if (this.recentMatches.length > this.recentMatchLimit) {
+            this.recentMatches.shift();
+        }
+    }
+    async addRule(rule) {
+        return this.ruleStore.addRule(rule);
+    }
+    findDuplicateRule(condition, compiled) {
+        return this.ruleStore.findDuplicateRule(condition, compiled);
+    }
+    async getAllRules() {
+        return this.ruleStore.getAllRules();
+    }
+    async getRule(id) {
+        return this.ruleStore.getRule(id);
+    }
+    async updateRule(id, updates) {
+        return this.ruleStore.updateRule(id, updates);
+    }
+    async deleteRule(id) {
+        return this.ruleStore.deleteRule(id);
+    }
+    getStats() {
+        return { ...this.stats };
+    }
+    getRecentMatches() {
+        return [...this.recentMatches];
+    }
+}
+exports.RuleEngine = RuleEngine;
+//# sourceMappingURL=RuleEngine.js.map
