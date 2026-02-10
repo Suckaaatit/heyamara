@@ -1,0 +1,70 @@
+import dotenv from 'dotenv';
+import path from 'path';
+import fs from 'fs';
+
+export interface Config {
+  watchDir: string;
+  dbPath: string;
+  logFile: string;
+  ollamaHost: string;
+  ollamaModel: string;
+  apiEnabled: boolean;
+  apiPort: number;
+  notificationsEnabled: boolean;
+  logLevel: string;
+  watchDebounceMs: number;
+  matchHistoryLimit: number;
+}
+
+// Load .env file if it exists
+const envPath = path.resolve(process.cwd(), '.env');
+if (fs.existsSync(envPath)) {
+  dotenv.config({ path: envPath });
+}
+
+function getEnvVar(key: string, defaultValue?: string): string {
+  const value = process.env[key];
+  if (value === undefined) {
+    if (defaultValue !== undefined) {
+      return defaultValue;
+    }
+    throw new Error(`Missing required environment variable: ${key}`);
+  }
+  return value;
+}
+
+function getEnvBool(key: string, defaultValue: boolean): boolean {
+  const value = process.env[key];
+  if (value === undefined) {
+    return defaultValue;
+  }
+  return value.toLowerCase() === 'true' || value === '1';
+}
+
+function getEnvInt(key: string, defaultValue: number): number {
+  const value = process.env[key];
+  if (value === undefined) {
+    return defaultValue;
+  }
+  const parsed = parseInt(value, 10);
+  if (isNaN(parsed)) {
+    throw new Error(`Environment variable ${key} must be a valid integer`);
+  }
+  return parsed;
+}
+
+export const config: Config = {
+  watchDir: path.resolve(getEnvVar('WATCH_DIR', './watched')),
+  dbPath: path.resolve(getEnvVar('DB_PATH', './data/rules.db')),
+  logFile: path.resolve(getEnvVar('LOG_FILE', './logs/daemon.log')),
+  ollamaHost: getEnvVar('OLLAMA_HOST', 'http://localhost:11434'),
+  ollamaModel: getEnvVar('OLLAMA_MODEL', 'tinyllama'),
+  apiEnabled: getEnvBool('API_ENABLED', true),
+  apiPort: getEnvInt('API_PORT', 3000),
+  notificationsEnabled: getEnvBool('NOTIFICATIONS_ENABLED', true),
+  logLevel: getEnvVar('LOG_LEVEL', 'info'),
+  watchDebounceMs: getEnvInt('WATCH_DEBOUNCE_MS', 250),
+  matchHistoryLimit: getEnvInt('MATCH_HISTORY_LIMIT', 100),
+};
+
+export default config;

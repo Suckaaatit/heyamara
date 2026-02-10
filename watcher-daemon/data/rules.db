@@ -1,0 +1,183 @@
+{
+  "version": 2,
+  "rules": [
+    {
+      "id": "rule_e99fc200-0618-44f4-a41b-5c7e1f2781fe",
+      "name": "TypeScript File Watcher",
+      "description": "Alert when .ts files are created",
+      "enabled": true,
+      "createdAt": 1770497819434,
+      "matchCount": 66,
+      "type": "pattern",
+      "match": {
+        "extensions": [
+          ".ts",
+          ".tsx"
+        ],
+        "eventTypes": [
+          "created",
+          "modified",
+          "deleted"
+        ]
+      },
+      "action": "notify",
+      "source": "llm",
+      "originalCondition": "When a new .ts file is created in src/, alert me",
+      "lastMatched": 1770561484763
+    },
+    {
+      "id": "rule_cb1130ef-1cad-4ede-9849-8ebc5253df54",
+      "name": "DemoName",
+      "description": "DemoRule",
+      "enabled": true,
+      "createdAt": 1770526810184,
+      "matchCount": 44,
+      "type": "pattern",
+      "match": {
+        "extensions": [
+          ".ts",
+          ".tsx"
+        ],
+        "eventTypes": [
+          "created",
+          "modified",
+          "deleted"
+        ]
+      },
+      "action": "notify",
+      "source": "llm",
+      "originalCondition": "AlertWhenTSChanges",
+      "lastMatched": 1770561484834
+    },
+    {
+      "id": "rule_9b25dd5b-66b0-49bc-8a60-e2ad43080cb3",
+      "name": "Simple extension + event rule (baseline correctness)",
+      "description": "",
+      "enabled": true,
+      "createdAt": 1770529034879,
+      "matchCount": 43,
+      "type": "pattern",
+      "match": {
+        "extensions": [
+          ".ts",
+          ".tsx"
+        ],
+        "eventTypes": [
+          "created",
+          "modified",
+          "deleted"
+        ]
+      },
+      "action": "notify",
+      "source": "llm",
+      "originalCondition": "Alert me when a new .ts file is created anywhere under src/.",
+      "lastMatched": 1770561484880
+    },
+    {
+      "id": "rule_e021952a-cb6b-4656-a6e7-af05e313c3ea",
+      "name": "Delete rule with explicit intent",
+      "description": "",
+      "enabled": true,
+      "createdAt": 1770529161543,
+      "matchCount": 13,
+      "type": "pattern",
+      "match": {
+        "pathExcludes": [
+          "node_modules/",
+          "__tests__/"
+        ],
+        "extensions": [
+          ".ts",
+          ".tsx"
+        ],
+        "eventTypes": [
+          "created",
+          "modified",
+          "deleted"
+        ]
+      },
+      "action": "notify",
+      "source": "llm",
+      "originalCondition": "Alert me if a file is deleted from build/",
+      "lastMatched": 1770561485596
+    },
+    {
+      "id": "rule_6f3e1218-6b8a-4b07-bcec-bc2687c07ef4",
+      "name": "Threshold rule (compiler strength test)",
+      "description": "",
+      "enabled": true,
+      "createdAt": 1770530805042,
+      "matchCount": 0,
+      "type": "pattern",
+      "match": {
+        "pathExcludes": [
+          "node_modules/"
+        ],
+        "extensions": [
+          ".c",
+          ".h"
+        ],
+        "eventTypes": [
+          "modified"
+        ],
+        "pathIncludes": [
+          "__tests__/",
+          "5/"
+        ]
+      },
+      "action": "notify",
+      "source": "llm",
+      "originalCondition": "If 3 or more files under __tests__/ are changed within 5 minutes, alert me"
+    },
+    {
+      "id": "rule_c96ac549-aa7e-4308-b38c-d5165902f79a",
+      "name": "Simple create rule (happy path)",
+      "description": "",
+      "enabled": true,
+      "createdAt": 1770531918704,
+      "matchCount": 6,
+      "type": "pattern",
+      "match": {
+        "pathExcludes": [],
+        "extensions": [
+          ".ts"
+        ],
+        "eventTypes": [
+          "created"
+        ],
+        "pathIncludes": [
+          "src/"
+        ]
+      },
+      "action": "notify",
+      "source": "llm",
+      "originalCondition": "When a new .ts file is created in src/, alert me",
+      "lastMatched": 1770561485825
+    },
+    {
+      "id": "rule_3be41f40-8047-4129-b07d-e7afe2be8bb4",
+      "name": "persistence test)",
+      "description": "",
+      "enabled": true,
+      "createdAt": 1770539019347,
+      "matchCount": 6,
+      "type": "pattern",
+      "match": {
+        "pathExcludes": [],
+        "extensions": [
+          ".ts"
+        ],
+        "eventTypes": [
+          "created"
+        ],
+        "pathIncludes": [
+          "src/"
+        ]
+      },
+      "action": "notify",
+      "source": "llm",
+      "originalCondition": "When a new .ts file is created in src/, alert me",
+      "lastMatched": 1770561485850
+    }
+  ]
+}

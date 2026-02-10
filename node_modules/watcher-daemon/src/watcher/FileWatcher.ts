@@ -1,0 +1,137 @@
+import path from 'path';
+import chokidar from 'chokidar';
+import Logger from '../logger/Logger';
+import { FileEvent, FileEventType } from './types';
+
+type EventListener = (event: FileEvent) => Promise<void> | void;
+
+interface DebounceState {
+  timer: NodeJS.Timeout;
+  added: boolean;
+  changed: boolean;
+  deleted: boolean;
+}
+
+export class FileWatcher {
+  private watchPath: string;
+  private debounceMs: number;
+  private watcher: chokidar.FSWatcher | null = null;
+  private listeners: EventListener[] = [];
+  private debounceMap = new Map<string, DebounceState>();
+
+  constructor(watchPath: string, debounceMs = 250) {
+    this.watchPath = watchPath;
+    this.debounceMs = debounceMs;
+  }
+
+  start(): void {
+    Logger.info('Starting file watcher', { path: this.watchPath, debounceMs: this.debounceMs });
+    this.watcher = chokidar.watch(this.watchPath, {
+      ignored: [
+        /(^|[\/\\])\../, // dotfiles
+        /node_modules/,
+        /\.git/,
+        /dist/,
+        /\.next/,
+      ],
+      persistent: true,
+      ignoreInitial: false,
+      awaitWriteFinish: {
+        stabilityThreshold: 200,
+        pollInterval: 100,
+      },
+    });
+
+    this.watcher
+      .on('add', (filePath) => this.enqueue('add', filePath))
+      .on('change', (filePath) => this.enqueue('change', filePath))
+      .on('unlink', (filePath) => this.enqueue('unlink', filePath))
+      .on('error', (error) => Logger.error('Watcher error', { error: error.message }))
+      .on('ready', () => Logger.info('File watcher ready'));
+
+    Logger.debug('File watcher configured', {
+      watchPath: this.watchPath,
+      ignoredPatterns: ['dotfiles', 'node_modules', '.git', 'dist', '.next'],
+    });
+  }
+
+  private enqueue(type: 'add' | 'change' | 'unlink', filePath: string): void {
+    const existing = this.debounceMap.get(filePath);
+    const state = existing || {
+      timer: setTimeout(() => undefined, 0),
+      added: false,
+      changed: false,
+      deleted: false,
+    };
+
+    if (type === 'add') state.added = true;
+    if (type === 'change') state.changed = true;
+    if (type === 'unlink') state.deleted = true;
+
+    if (existing) {
+      clearTimeout(existing.timer);
+    }
+
+    state.timer = setTimeout(() => {
+      this.debounceMap.delete(filePath);
+      const normalizedType = this.normalizeType(state);
+      const normalizedPath = this.normalizePath(filePath);
+      if (!normalizedPath) return;
+      this.emitEvent(normalizedType, normalizedPath);
+    }, this.debounceMs);
+
+    this.debounceMap.set(filePath, state);
+  }
+
+  private normalizeType(state: DebounceState): FileEventType {
+    if (state.deleted) return 'deleted';
+    if (state.added) return 'created';
+    return 'modified';
+  }
+
+  private normalizePath(filePath: string): string | null {
+    const relative = path.relative(this.watchPath, filePath);
+    if (relative.startsWith('..') || path.isAbsolute(relative)) {
+      Logger.warn('Skipped path outside watch directory', { path: filePath });
+      return null;
+    }
+    return relative.split(path.sep).join('/');
+  }
+
+  private async emitEvent(type: FileEventType, normalizedPath: string): Promise<void> {
+    const event: FileEvent = {
+      type,
+      path: normalizedPath,
+      timestamp: Date.now(),
+    };
+
+    Logger.debug('File event detected', {
+      type,
+      path: event.path,
+    });
+
+    for (const listener of this.listeners) {
+      try {
+        await listener(event);
+      } catch (error) {
+        Logger.error('Error in event listener', {
+          error: error instanceof Error ? error.message : 'Unknown error',
+        });
+      }
+    }
+  }
+
+  onEvent(listener: EventListener): void {
+    this.listeners.push(listener);
+    Logger.debug('Event listener registered', { totalListeners: this.listeners.length });
+  }
+
+  stop(): void {
+    if (this.watcher) {
+      Logger.info('Stopping file watcher');
+      this.watcher.close();
+      this.watcher = null;
+      Logger.debug('File watcher stopped');
+    }
+  }
+}

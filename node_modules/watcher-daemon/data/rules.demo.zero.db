@@ -1,0 +1,54 @@
+{
+  "version": 2,
+  "rules": [
+    {
+      "id": "rule_9dfb2a80-048e-4c86-b8de-9c406740841a",
+      "name": "Happy-path create",
+      "description": "",
+      "enabled": true,
+      "createdAt": 1770565400134,
+      "matchCount": 1,
+      "type": "pattern",
+      "match": {
+        "pathExcludes": [],
+        "extensions": [
+          ".ts"
+        ],
+        "eventTypes": [
+          "created"
+        ],
+        "pathIncludes": [
+          "src/"
+        ]
+      },
+      "action": "notify",
+      "source": "llm",
+      "originalCondition": "When a new .ts file is created in src/, alert me",
+      "lastMatched": 1770565551712
+    },
+    {
+      "id": "rule_7ce3c8d0-8909-4cc3-9683-d1632fd8dce2",
+      "name": "Multiple rules",
+      "description": "",
+      "enabled": true,
+      "createdAt": 1770565516437,
+      "matchCount": 0,
+      "type": "pattern",
+      "match": {
+        "pathExcludes": [],
+        "extensions": [
+          ".md"
+        ],
+        "eventTypes": [
+          "modified"
+        ],
+        "pathIncludes": [
+          "docs/"
+        ]
+      },
+      "action": "notify",
+      "source": "llm",
+      "originalCondition": "Notify me when any .md file is modified in docs/"
+    }
+  ]
+}

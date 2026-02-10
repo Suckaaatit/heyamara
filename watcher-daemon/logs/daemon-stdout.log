@@ -1,0 +1,92 @@
+[32minfo[39m: Created directory {"path":"c:\\Users\\AKASH\\Downloads\\Kimi_Agent_Watcher Daemon Plan\\data","service":"watcher-daemon","timestamp":"2026-02-08T09:38:02.433Z"}
+[32minfo[39m: Security: Watch directory validated {"path":"c:\\Users\\AKASH\\Downloads\\Kimi_Agent_Watcher Daemon Plan\\watched","service":"watcher-daemon","timestamp":"2026-02-08T09:38:02.442Z"}
+🚀 Watcher Daemon Starting...
+
+[32minfo[39m: Rule store initialized (new) {"path":"c:\\Users\\AKASH\\Downloads\\Kimi_Agent_Watcher Daemon Plan\\data\\rules.db","service":"watcher-daemon","timestamp":"2026-02-08T09:38:02.456Z"}
+[32minfo[39m: LLM health check passed {"model":"tinyllama","service":"watcher-daemon","timestamp":"2026-02-08T09:38:02.631Z"}
+[32minfo[39m: Starting file watcher {"debounceMs":250,"path":"c:\\Users\\AKASH\\Downloads\\Kimi_Agent_Watcher Daemon Plan\\watched","service":"watcher-daemon","timestamp":"2026-02-08T09:38:02.632Z"}
+✅ Daemon Running
+
+Configuration:
+  📁 Watch Directory: c:\Users\AKASH\Downloads\Kimi_Agent_Watcher Daemon Plan\watched
+  🧠 Rules Loaded: 0
+  🔔 Notifications: Enabled
+  🪵 Debounce: 250ms
+  📡 API: http://localhost:3000
+  📝 Logs: c:\Users\AKASH\Downloads\Kimi_Agent_Watcher Daemon Plan\logs\daemon.log
+
+Press Ctrl+C to stop
+
+[32minfo[39m: API server started {"port":3000,"service":"watcher-daemon","timestamp":"2026-02-08T09:38:02.642Z"}
+
+📡 API Server: http://localhost:3000
+[32minfo[39m: File watcher ready {"service":"watcher-daemon","timestamp":"2026-02-08T09:38:02.664Z"}
+[32minfo[39m: Event observed {"path":"tmp.txt","service":"watcher-daemon","timestamp":1770543482918,"type":"created"}
+[32minfo[39m: Event observed {"path":"src/demo.ts","service":"watcher-daemon","timestamp":1770543482919,"type":"created"}
+[32minfo[39m: LLM health check passed {"model":"tinyllama","service":"watcher-daemon","timestamp":"2026-02-08T09:39:46.426Z"}
+[32minfo[39m: Rule compiler: adjusted output to match user intent {"condition":"When a new .ts file is created in src/, alert me","intent":{"eventTypes":["created"],"extensions":[".ts"],"pathIncludes":["src/"]},"service":"watcher-daemon","timestamp":"2026-02-08T09:40:06.134Z"}
+[32minfo[39m: LLM health check passed {"model":"tinyllama","service":"watcher-daemon","timestamp":"2026-02-08T09:40:26.768Z"}
+[32minfo[39m: Rule compiler: adjusted output to match user intent {"condition":"Notify me when any .md file is modified in docs/","intent":{"eventTypes":["modified"],"extensions":[".md"],"pathIncludes":["docs/"]},"service":"watcher-daemon","timestamp":"2026-02-08T09:40:32.337Z"}
+[32minfo[39m: LLM health check passed {"model":"tinyllama","service":"watcher-daemon","timestamp":"2026-02-08T09:43:29.704Z"}
+[33mwarn[39m: LLM request failed {"attempt":1,"error":"timeout of 30000ms exceeded","maxRetries":2,"service":"watcher-daemon","timestamp":"2026-02-08T09:44:01.893Z"}
+[33mwarn[39m: LLM request failed {"attempt":2,"error":"timeout of 30000ms exceeded","maxRetries":2,"service":"watcher-daemon","timestamp":"2026-02-08T09:44:32.995Z"}
+[31merror[39m: Rule compilation failed {"error":"timeout of 30000ms exceeded","service":"watcher-daemon","timestamp":"2026-02-08T09:44:33.012Z"}
+[32minfo[39m: LLM health check passed {"model":"tinyllama","service":"watcher-daemon","timestamp":"2026-02-08T09:45:39.864Z"}
+[32minfo[39m: Rule compiler: adjusted output to match user intent {"condition":"If 3 or more files under __tests__/ are changed within 5 minutes, alert me","intent":{"count":3,"eventTypes":["modified"],"extensions":[],"pathIncludes":["__tests__/"],"windowSeconds":300},"service":"watcher-daemon","timestamp":"2026-02-08T09:45:47.165Z"}
+[32minfo[39m: LLM health check passed {"model":"tinyllama","service":"watcher-daemon","timestamp":"2026-02-08T09:46:06.065Z"}
+[32minfo[39m: Rule compiler: adjusted output to match user intent {"condition":"Alert me when anything changes anywhere","intent":{"eventTypes":[],"extensions":[],"pathIncludes":[]},"service":"watcher-daemon","timestamp":"2026-02-08T09:46:12.617Z"}
+[32minfo[39m: LLM health check passed {"model":"tinyllama","service":"watcher-daemon","timestamp":"2026-02-08T09:46:45.979Z"}
+[32minfo[39m: Rule compiler: adjusted output to match user intent {"condition":"Notify me when any .md file is modified in docs/","intent":{"eventTypes":["modified"],"extensions":[".md"],"pathIncludes":["docs/"]},"service":"watcher-daemon","timestamp":"2026-02-08T09:46:51.183Z"}
+[32minfo[39m: LLM health check passed {"model":"tinyllama","service":"watcher-daemon","timestamp":"2026-02-08T09:47:30.495Z"}
+[32minfo[39m: Rule compiler: adjusted output to match user intent {"condition":"When a new .ts file is created in src/, alert me","intent":{"eventTypes":["created"],"extensions":[".ts"],"pathIncludes":["src/"]},"service":"watcher-daemon","timestamp":"2026-02-08T09:47:37.051Z"}
+[32minfo[39m: Rule added {"id":"rule_b2d05a9b-756c-4769-b76b-29a3928acff1","name":"Happy-path create","service":"watcher-daemon","timestamp":"2026-02-08T09:47:37.116Z","type":"pattern"}
+[32minfo[39m: API: Rule added {"id":"rule_b2d05a9b-756c-4769-b76b-29a3928acff1","name":"Happy-path create","service":"watcher-daemon","timestamp":"2026-02-08T09:47:37.118Z","type":"pattern"}
+[32minfo[39m: Rule added {"id":"rule_1ea43818-b023-4c06-843a-bb0dd226e496","name":"Multiple rules","service":"watcher-daemon","timestamp":"2026-02-08T09:47:50.420Z","type":"pattern"}
+[32minfo[39m: API: Rule added {"id":"rule_1ea43818-b023-4c06-843a-bb0dd226e496","name":"Multiple rules","service":"watcher-daemon","timestamp":"2026-02-08T09:47:50.421Z","type":"pattern"}
+[32minfo[39m: Event observed {"path":"src/a.ts","service":"watcher-daemon","timestamp":1770544224943,"type":"created"}
+[32minfo[39m: Rule matched {"ruleId":"rule_b2d05a9b-756c-4769-b76b-29a3928acff1","ruleName":"Happy-path create","service":"watcher-daemon","timestamp":"2026-02-08T09:50:24.966Z","type":"pattern"}
+
+============================================================
+🔔 Rule Matched: Happy-path create
+File src/a.ts was created
+============================================================
+
+[32minfo[39m: Event observed {"path":"docs/readme.md","service":"watcher-daemon","timestamp":1770544483263,"type":"created"}
+[32minfo[39m: LLM health check passed {"model":"tinyllama","service":"watcher-daemon","timestamp":"2026-02-08T09:56:46.116Z"}
+[32minfo[39m: Rule compiler: adjusted output to match user intent {"condition":"echo c > watched/__tests__/3.ts","intent":{"eventTypes":[],"extensions":[".ts"],"pathIncludes":["watched/","__tests__/"]},"service":"watcher-daemon","timestamp":"2026-02-08T09:57:08.950Z"}
+[32minfo[39m: LLM health check passed {"model":"tinyllama","service":"watcher-daemon","timestamp":"2026-02-08T10:25:32.388Z"}
+[32minfo[39m: Rule compiler: adjusted output to match user intent {"condition":"When a new .ts file is created in src/, alert me","intent":{"eventTypes":["created"],"extensions":[".ts"],"pathIncludes":["src/"]},"service":"watcher-daemon","timestamp":"2026-02-08T10:25:59.221Z"}
+[32minfo[39m: LLM health check passed {"model":"tinyllama","service":"watcher-daemon","timestamp":"2026-02-08T10:26:09.478Z"}
+[32minfo[39m: Rule compiler: adjusted output to match user intent {"condition":"Notify me when any .md file is modified in docs/","intent":{"eventTypes":["modified"],"extensions":[".md"],"pathIncludes":["docs/"]},"service":"watcher-daemon","timestamp":"2026-02-08T10:26:18.338Z"}
+[32minfo[39m: LLM health check passed {"model":"tinyllama","service":"watcher-daemon","timestamp":"2026-02-08T10:26:25.404Z"}
+[32minfo[39m: Rule compiler: adjusted output to match user intent {"condition":"Alert me if a file is deleted from build/","intent":{"eventTypes":["deleted"],"extensions":[],"pathIncludes":["build/"]},"service":"watcher-daemon","timestamp":"2026-02-08T10:26:34.760Z"}
+[32minfo[39m: LLM health check passed {"model":"tinyllama","service":"watcher-daemon","timestamp":"2026-02-08T10:26:45.458Z"}
+[32minfo[39m: Rule compiler: adjusted output to match user intent {"condition":"If 3 or more files under __tests__/ are changed within 5 minutes, alert me","intent":{"count":3,"eventTypes":["modified"],"extensions":[],"pathIncludes":["__tests__/"],"windowSeconds":300},"service":"watcher-daemon","timestamp":"2026-02-08T10:26:52.493Z"}
+[32minfo[39m: LLM health check passed {"model":"tinyllama","service":"watcher-daemon","timestamp":"2026-02-08T10:27:14.775Z"}
+[32minfo[39m: Rule compiler: adjusted output to match user intent {"condition":"Alert me when anything changes anywhere","intent":{"eventTypes":[],"extensions":[],"pathIncludes":[]},"service":"watcher-daemon","timestamp":"2026-02-08T10:27:23.439Z"}
+[32minfo[39m: LLM health check passed {"model":"tinyllama","service":"watcher-daemon","timestamp":"2026-02-08T10:28:14.962Z"}
+[32minfo[39m: Rule compiler: adjusted output to match user intent {"condition":"Stop daemon\n\nStart daemon\n\nOpen UI","intent":{"eventTypes":[],"extensions":[],"pathIncludes":[]},"service":"watcher-daemon","timestamp":"2026-02-08T10:28:28.172Z"}
+[32minfo[39m: LLM health check passed {"model":"tinyllama","service":"watcher-daemon","timestamp":"2026-02-08T10:29:12.688Z"}
+[32minfo[39m: Rule compiler: adjusted output to match user intent {"condition":"Toggle rule OFF\n\nTrigger file change","intent":{"eventTypes":["modified"],"extensions":[],"pathIncludes":[]},"service":"watcher-daemon","timestamp":"2026-02-08T10:29:20.333Z"}
+[32minfo[39m: Event observed {"path":"src/c.ts","service":"watcher-daemon","timestamp":1770546764124,"type":"created"}
+[32minfo[39m: Rule matched {"ruleId":"rule_b2d05a9b-756c-4769-b76b-29a3928acff1","ruleName":"Happy-path create","service":"watcher-daemon","timestamp":"2026-02-08T10:32:44.167Z","type":"pattern"}
+
+============================================================
+🔔 Rule Matched: Happy-path create
+File src/c.ts was created
+============================================================
+
+[32minfo[39m: Event observed {"path":"docs/readme.md","service":"watcher-daemon","timestamp":1770546860360,"type":"modified"}
+[32minfo[39m: Rule matched {"ruleId":"rule_1ea43818-b023-4c06-843a-bb0dd226e496","ruleName":"Multiple rules","service":"watcher-daemon","timestamp":"2026-02-08T10:34:20.396Z","type":"pattern"}
+
+============================================================
+🔔 Rule Matched: Multiple rules
+File docs/readme.md was modified
+============================================================
+
+[32minfo[39m: Event observed {"path":"docs/readme.md","service":"watcher-daemon","timestamp":1770546864474,"type":"modified"}
+[32minfo[39m: Rule matched {"ruleId":"rule_1ea43818-b023-4c06-843a-bb0dd226e496","ruleName":"Multiple rules","service":"watcher-daemon","timestamp":"2026-02-08T10:34:24.480Z","type":"pattern"}
+[32minfo[39m: LLM health check passed {"model":"tinyllama","service":"watcher-daemon","timestamp":"2026-02-08T10:48:05.226Z"}
+[33mwarn[39m: LLM request failed {"attempt":1,"error":"timeout of 30000ms exceeded","maxRetries":2,"service":"watcher-daemon","timestamp":"2026-02-08T10:48:35.284Z"}
+[32minfo[39m: LLM request succeeded after retry {"attempt":2,"service":"watcher-daemon","timestamp":"2026-02-08T10:48:43.421Z"}
+[32minfo[39m: Rule compiler: adjusted output to match user intent {"condition":"When a new .ts file is created in src/, alert me","intent":{"eventTypes":["created"],"extensions":[".ts"],"pathIncludes":["src/"]},"service":"watcher-daemon","timestamp":"2026-02-08T10:48:43.429Z"}

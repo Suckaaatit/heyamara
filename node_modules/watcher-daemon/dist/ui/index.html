@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Watcher Daemon UI</title>
+    <link rel="stylesheet" href="/ui/styles.css" />
+  </head>
+  <body>
+    <div class="bg" aria-hidden="true"></div>
+    <header class="hero">
+      <div class="pill">Local • Headless • TypeScript</div>
+      <h1>Watcher Daemon</h1>
+      <p class="subtitle">
+        A local companion that watches files, compiles rules, and surfaces matches without a UI
+        dependency.
+      </p>
+      <p class="subtitle inspector">Debug / Inspector — This UI is a local inspector; the daemon runs independently.</p>
+      <div class="status-row">
+        <span id="healthDot" class="dot" aria-hidden="true"></span>
+        <span id="healthText">Checking health…</span>
+        <button id="refreshBtn" class="btn">Refresh</button>
+      </div>
+    </header>
+
+    <main class="grid">
+      <section class="card">
+        <h2>Config</h2>
+        <p class="hint">Watch root, model, debounce, ignored paths.</p>
+        <div class="metrics-grid">
+          <div class="metric">
+            <span class="label">Watch Root</span>
+            <span id="cfgWatchRoot" class="metric-value">—</span>
+          </div>
+          <div class="metric">
+            <span class="label">Model</span>
+            <span id="cfgModel" class="metric-value">—</span>
+          </div>
+          <div class="metric">
+            <span class="label">Debounce</span>
+            <span id="cfgDebounce" class="metric-value">—</span>
+          </div>
+          <div class="metric">
+            <span class="label">Ignored</span>
+            <span id="cfgIgnored" class="metric-value">—</span>
+          </div>
+          <div class="metric">
+            <span class="label">API Port</span>
+            <span id="cfgPort" class="metric-value">—</span>
+          </div>
+        </div>
+        <details class="code-toggle" open>
+          <summary>JSON Output</summary>
+          <pre id="configOut" class="code">Loading…</pre>
+        </details>
+      </section>
+
+      <section class="card">
+        <h2>Snapshot</h2>
+        <div class="stats">
+          <div>
+            <span class="label">Rules</span>
+            <span id="rulesCount" class="value">—</span>
+          </div>
+          <div>
+            <span class="label">Matches</span>
+            <span id="matchesCount" class="value">—</span>
+          </div>
+          <div>
+            <span class="label">Events</span>
+            <span id="eventsCount" class="value">—</span>
+          </div>
+        </div>
+        <div class="metrics-grid">
+          <div class="metric">
+            <span class="label">Model</span>
+            <span id="metricModel" class="metric-value">—</span>
+          </div>
+          <div class="metric">
+            <span class="label">Total Tokens</span>
+            <span id="metricTotalTokens" class="metric-value">—</span>
+          </div>
+          <div class="metric">
+            <span class="label">Prompt Tokens</span>
+            <span id="metricPromptTokens" class="metric-value">—</span>
+          </div>
+          <div class="metric">
+            <span class="label">Completion Tokens</span>
+            <span id="metricCompletionTokens" class="metric-value">—</span>
+          </div>
+          <div class="metric">
+            <span class="label">Requests</span>
+            <span id="metricRequests" class="metric-value">—</span>
+          </div>
+          <div class="metric">
+            <span class="label">Success Rate</span>
+            <span id="metricSuccessRate" class="metric-value">—</span>
+          </div>
+          <div class="metric">
+            <span class="label">Avg Latency</span>
+            <span id="metricLatency" class="metric-value">—</span>
+          </div>
+          <div class="metric">
+            <span class="label">Uptime</span>
+            <span id="metricUptime" class="metric-value">—</span>
+          </div>
+        </div>
+        <pre id="reportMini" class="code">Loading…</pre>
+      </section>
+
+      <section class="card">
+        <h2>Compile Rule</h2>
+        <p class="hint">Compile without saving.</p>
+        <textarea id="compileInput" placeholder="When a new .ts file is created in src/, alert me"></textarea>
+        <button id="compileBtn" class="btn">Compile</button>
+        <details class="code-toggle" open>
+          <summary>Output</summary>
+          <pre id="compileOut" class="code">—</pre>
+        </details>
+      </section>
+
+      <section class="card">
+        <h2>Create Rule</h2>
+        <p class="hint">Compile + save to the local store.</p>
+        <input id="ruleName" type="text" placeholder="Rule name" />
+        <input id="ruleDesc" type="text" placeholder="Short description (optional)" />
+        <textarea id="ruleCondition" placeholder="Alert when TypeScript files change"></textarea>
+        <button id="createBtn" class="btn">Create</button>
+        <details class="code-toggle" open>
+          <summary>Output</summary>
+          <pre id="createOut" class="code">—</pre>
+        </details>
+      </section>
+
+      <section class="card">
+        <h2>Rules</h2>
+        <p class="hint">Stored rules (persisted).</p>
+        <div class="metrics-grid">
+          <div class="metric">
+            <span class="label">Total</span>
+            <span id="rulesTotalMetric" class="metric-value">—</span>
+          </div>
+          <div class="metric">
+            <span class="label">Enabled</span>
+            <span id="rulesEnabledMetric" class="metric-value">—</span>
+          </div>
+          <div class="metric">
+            <span class="label">Total Matches</span>
+            <span id="rulesMatchesMetric" class="metric-value">—</span>
+          </div>
+          <div class="metric">
+            <span class="label">Top Rule</span>
+            <span id="rulesTopMetric" class="metric-value">—</span>
+          </div>
+        </div>
+        <details class="code-toggle" open>
+          <summary>JSON Output</summary>
+          <pre id="rulesOut" class="code">Loading…</pre>
+        </details>
+      </section>
+
+      <section class="card">
+        <h2>Matches</h2>
+        <p class="hint">Recent matches with reasons.</p>
+        <div class="highlight-card">
+          <span class="label">Latest Match</span>
+          <span id="latestMatchSummary" class="highlight-title">—</span>
+          <span id="latestMatchMeta" class="highlight-meta">—</span>
+        </div>
+        <div class="metrics-grid">
+          <div class="metric">
+            <span class="label">Total</span>
+            <span id="matchesTotalMetric" class="metric-value">—</span>
+          </div>
+          <div class="metric">
+            <span class="label">Latest Time</span>
+            <span id="matchesLatestTime" class="metric-value">—</span>
+          </div>
+          <div class="metric">
+            <span class="label">Latest Rule</span>
+            <span id="matchesLatestRule" class="metric-value">—</span>
+          </div>
+          <div class="metric">
+            <span class="label">Latest Path</span>
+            <span id="matchesLatestPath" class="metric-value">—</span>
+          </div>
+        </div>
+        <details class="code-toggle" open>
+          <summary>JSON Output</summary>
+          <pre id="matchesOut" class="code">Loading…</pre>
+        </details>
+      </section>
+
+      <section class="card wide">
+        <h2>Report</h2>
+        <p class="hint">LLM usage and engine stats.</p>
+        <div class="metrics-grid">
+          <div class="metric">
+            <span class="label">Model</span>
+            <span id="reportModel" class="metric-value">—</span>
+          </div>
+          <div class="metric">
+            <span class="label">Total Tokens</span>
+            <span id="reportTotalTokens" class="metric-value">—</span>
+          </div>
+          <div class="metric">
+            <span class="label">Requests</span>
+            <span id="reportRequests" class="metric-value">—</span>
+          </div>
+          <div class="metric">
+            <span class="label">Success Rate</span>
+            <span id="reportSuccessRate" class="metric-value">—</span>
+          </div>
+          <div class="metric">
+            <span class="label">Avg Latency</span>
+            <span id="reportLatency" class="metric-value">—</span>
+          </div>
+        </div>
+        <details class="code-toggle" open>
+          <summary>JSON Output</summary>
+          <pre id="reportOut" class="code">Loading…</pre>
+        </details>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <span>Open the API at <code>http://localhost:3000</code>. UI lives at <code>/ui</code>.</span>
+    </footer>
+
+    <script src="/ui/app.js" defer></script>
+  </body>
+</html>

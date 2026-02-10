@@ -1,0 +1,101 @@
+{"level":"info","message":"Created directory","path":"c:\\Users\\AKASH\\Downloads\\Kimi_Agent_Watcher Daemon Plan\\data","service":"watcher-daemon","timestamp":"2026-02-08T09:38:02.433Z"}
+{"level":"info","message":"Security: Watch directory validated","path":"c:\\Users\\AKASH\\Downloads\\Kimi_Agent_Watcher Daemon Plan\\watched","service":"watcher-daemon","timestamp":"2026-02-08T09:38:02.442Z"}
+{"level":"info","message":"Rule store initialized (new)","path":"c:\\Users\\AKASH\\Downloads\\Kimi_Agent_Watcher Daemon Plan\\data\\rules.db","service":"watcher-daemon","timestamp":"2026-02-08T09:38:02.456Z"}
+{"level":"info","message":"LLM health check passed","model":"tinyllama","service":"watcher-daemon","timestamp":"2026-02-08T09:38:02.631Z"}
+{"debounceMs":250,"level":"info","message":"Starting file watcher","path":"c:\\Users\\AKASH\\Downloads\\Kimi_Agent_Watcher Daemon Plan\\watched","service":"watcher-daemon","timestamp":"2026-02-08T09:38:02.632Z"}
+{"level":"info","message":"API server started","port":3000,"service":"watcher-daemon","timestamp":"2026-02-08T09:38:02.642Z"}
+{"level":"info","message":"File watcher ready","service":"watcher-daemon","timestamp":"2026-02-08T09:38:02.664Z"}
+{"level":"info","message":"Event observed","path":"tmp.txt","service":"watcher-daemon","timestamp":1770543482918,"type":"created"}
+{"level":"info","message":"Event observed","path":"src/demo.ts","service":"watcher-daemon","timestamp":1770543482919,"type":"created"}
+{"level":"info","message":"LLM health check passed","model":"tinyllama","service":"watcher-daemon","timestamp":"2026-02-08T09:39:46.426Z"}
+{"condition":"When a new .ts file is created in src/, alert me","intent":{"eventTypes":["created"],"extensions":[".ts"],"pathIncludes":["src/"]},"level":"info","message":"Rule compiler: adjusted output to match user intent","service":"watcher-daemon","timestamp":"2026-02-08T09:40:06.134Z"}
+{"level":"info","message":"LLM health check passed","model":"tinyllama","service":"watcher-daemon","timestamp":"2026-02-08T09:40:26.768Z"}
+{"condition":"Notify me when any .md file is modified in docs/","intent":{"eventTypes":["modified"],"extensions":[".md"],"pathIncludes":["docs/"]},"level":"info","message":"Rule compiler: adjusted output to match user intent","service":"watcher-daemon","timestamp":"2026-02-08T09:40:32.337Z"}
+{"level":"info","message":"LLM health check passed","model":"tinyllama","service":"watcher-daemon","timestamp":"2026-02-08T09:43:29.704Z"}
+{"attempt":1,"error":"timeout of 30000ms exceeded","level":"warn","maxRetries":2,"message":"LLM request failed","service":"watcher-daemon","timestamp":"2026-02-08T09:44:01.893Z"}
+{"attempt":2,"error":"timeout of 30000ms exceeded","level":"warn","maxRetries":2,"message":"LLM request failed","service":"watcher-daemon","timestamp":"2026-02-08T09:44:32.995Z"}
+{"error":"timeout of 30000ms exceeded","level":"error","message":"Rule compilation failed","service":"watcher-daemon","timestamp":"2026-02-08T09:44:33.012Z"}
+{"level":"info","message":"LLM health check passed","model":"tinyllama","service":"watcher-daemon","timestamp":"2026-02-08T09:45:39.864Z"}
+{"condition":"If 3 or more files under __tests__/ are changed within 5 minutes, alert me","intent":{"count":3,"eventTypes":["modified"],"extensions":[],"pathIncludes":["__tests__/"],"windowSeconds":300},"level":"info","message":"Rule compiler: adjusted output to match user intent","service":"watcher-daemon","timestamp":"2026-02-08T09:45:47.165Z"}
+{"level":"info","message":"LLM health check passed","model":"tinyllama","service":"watcher-daemon","timestamp":"2026-02-08T09:46:06.065Z"}
+{"condition":"Alert me when anything changes anywhere","intent":{"eventTypes":[],"extensions":[],"pathIncludes":[]},"level":"info","message":"Rule compiler: adjusted output to match user intent","service":"watcher-daemon","timestamp":"2026-02-08T09:46:12.617Z"}
+{"level":"info","message":"LLM health check passed","model":"tinyllama","service":"watcher-daemon","timestamp":"2026-02-08T09:46:45.979Z"}
+{"condition":"Notify me when any .md file is modified in docs/","intent":{"eventTypes":["modified"],"extensions":[".md"],"pathIncludes":["docs/"]},"level":"info","message":"Rule compiler: adjusted output to match user intent","service":"watcher-daemon","timestamp":"2026-02-08T09:46:51.183Z"}
+{"level":"info","message":"LLM health check passed","model":"tinyllama","service":"watcher-daemon","timestamp":"2026-02-08T09:47:30.495Z"}
+{"condition":"When a new .ts file is created in src/, alert me","intent":{"eventTypes":["created"],"extensions":[".ts"],"pathIncludes":["src/"]},"level":"info","message":"Rule compiler: adjusted output to match user intent","service":"watcher-daemon","timestamp":"2026-02-08T09:47:37.051Z"}
+{"id":"rule_b2d05a9b-756c-4769-b76b-29a3928acff1","level":"info","message":"Rule added","name":"Happy-path create","service":"watcher-daemon","timestamp":"2026-02-08T09:47:37.116Z","type":"pattern"}
+{"id":"rule_b2d05a9b-756c-4769-b76b-29a3928acff1","level":"info","message":"API: Rule added","name":"Happy-path create","service":"watcher-daemon","timestamp":"2026-02-08T09:47:37.118Z","type":"pattern"}
+{"id":"rule_1ea43818-b023-4c06-843a-bb0dd226e496","level":"info","message":"Rule added","name":"Multiple rules","service":"watcher-daemon","timestamp":"2026-02-08T09:47:50.420Z","type":"pattern"}
+{"id":"rule_1ea43818-b023-4c06-843a-bb0dd226e496","level":"info","message":"API: Rule added","name":"Multiple rules","service":"watcher-daemon","timestamp":"2026-02-08T09:47:50.421Z","type":"pattern"}
+{"level":"info","message":"Event observed","path":"src/a.ts","service":"watcher-daemon","timestamp":1770544224943,"type":"created"}
+{"level":"info","message":"Rule matched","ruleId":"rule_b2d05a9b-756c-4769-b76b-29a3928acff1","ruleName":"Happy-path create","service":"watcher-daemon","timestamp":"2026-02-08T09:50:24.966Z","type":"pattern"}
+{"level":"info","message":"Event observed","path":"docs/readme.md","service":"watcher-daemon","timestamp":1770544483263,"type":"created"}
+{"level":"info","message":"LLM health check passed","model":"tinyllama","service":"watcher-daemon","timestamp":"2026-02-08T09:56:46.116Z"}
+{"condition":"echo c > watched/__tests__/3.ts","intent":{"eventTypes":[],"extensions":[".ts"],"pathIncludes":["watched/","__tests__/"]},"level":"info","message":"Rule compiler: adjusted output to match user intent","service":"watcher-daemon","timestamp":"2026-02-08T09:57:08.950Z"}
+{"level":"info","message":"LLM health check passed","model":"tinyllama","service":"watcher-daemon","timestamp":"2026-02-08T10:25:32.388Z"}
+{"condition":"When a new .ts file is created in src/, alert me","intent":{"eventTypes":["created"],"extensions":[".ts"],"pathIncludes":["src/"]},"level":"info","message":"Rule compiler: adjusted output to match user intent","service":"watcher-daemon","timestamp":"2026-02-08T10:25:59.221Z"}
+{"level":"info","message":"LLM health check passed","model":"tinyllama","service":"watcher-daemon","timestamp":"2026-02-08T10:26:09.478Z"}
+{"condition":"Notify me when any .md file is modified in docs/","intent":{"eventTypes":["modified"],"extensions":[".md"],"pathIncludes":["docs/"]},"level":"info","message":"Rule compiler: adjusted output to match user intent","service":"watcher-daemon","timestamp":"2026-02-08T10:26:18.338Z"}
+{"level":"info","message":"LLM health check passed","model":"tinyllama","service":"watcher-daemon","timestamp":"2026-02-08T10:26:25.404Z"}
+{"condition":"Alert me if a file is deleted from build/","intent":{"eventTypes":["deleted"],"extensions":[],"pathIncludes":["build/"]},"level":"info","message":"Rule compiler: adjusted output to match user intent","service":"watcher-daemon","timestamp":"2026-02-08T10:26:34.760Z"}
+{"level":"info","message":"LLM health check passed","model":"tinyllama","service":"watcher-daemon","timestamp":"2026-02-08T10:26:45.458Z"}
+{"condition":"If 3 or more files under __tests__/ are changed within 5 minutes, alert me","intent":{"count":3,"eventTypes":["modified"],"extensions":[],"pathIncludes":["__tests__/"],"windowSeconds":300},"level":"info","message":"Rule compiler: adjusted output to match user intent","service":"watcher-daemon","timestamp":"2026-02-08T10:26:52.493Z"}
+{"level":"info","message":"LLM health check passed","model":"tinyllama","service":"watcher-daemon","timestamp":"2026-02-08T10:27:14.775Z"}
+{"condition":"Alert me when anything changes anywhere","intent":{"eventTypes":[],"extensions":[],"pathIncludes":[]},"level":"info","message":"Rule compiler: adjusted output to match user intent","service":"watcher-daemon","timestamp":"2026-02-08T10:27:23.439Z"}
+{"level":"info","message":"LLM health check passed","model":"tinyllama","service":"watcher-daemon","timestamp":"2026-02-08T10:28:14.962Z"}
+{"condition":"Stop daemon\n\nStart daemon\n\nOpen UI","intent":{"eventTypes":[],"extensions":[],"pathIncludes":[]},"level":"info","message":"Rule compiler: adjusted output to match user intent","service":"watcher-daemon","timestamp":"2026-02-08T10:28:28.172Z"}
+{"level":"info","message":"LLM health check passed","model":"tinyllama","service":"watcher-daemon","timestamp":"2026-02-08T10:29:12.688Z"}
+{"condition":"Toggle rule OFF\n\nTrigger file change","intent":{"eventTypes":["modified"],"extensions":[],"pathIncludes":[]},"level":"info","message":"Rule compiler: adjusted output to match user intent","service":"watcher-daemon","timestamp":"2026-02-08T10:29:20.333Z"}
+{"level":"info","message":"Event observed","path":"src/c.ts","service":"watcher-daemon","timestamp":1770546764124,"type":"created"}
+{"level":"info","message":"Rule matched","ruleId":"rule_b2d05a9b-756c-4769-b76b-29a3928acff1","ruleName":"Happy-path create","service":"watcher-daemon","timestamp":"2026-02-08T10:32:44.167Z","type":"pattern"}
+{"level":"info","message":"Event observed","path":"docs/readme.md","service":"watcher-daemon","timestamp":1770546860360,"type":"modified"}
+{"level":"info","message":"Rule matched","ruleId":"rule_1ea43818-b023-4c06-843a-bb0dd226e496","ruleName":"Multiple rules","service":"watcher-daemon","timestamp":"2026-02-08T10:34:20.396Z","type":"pattern"}
+{"level":"info","message":"Event observed","path":"docs/readme.md","service":"watcher-daemon","timestamp":1770546864474,"type":"modified"}
+{"level":"info","message":"Rule matched","ruleId":"rule_1ea43818-b023-4c06-843a-bb0dd226e496","ruleName":"Multiple rules","service":"watcher-daemon","timestamp":"2026-02-08T10:34:24.480Z","type":"pattern"}
+{"level":"info","message":"LLM health check passed","model":"tinyllama","service":"watcher-daemon","timestamp":"2026-02-08T10:48:05.226Z"}
+{"attempt":1,"error":"timeout of 30000ms exceeded","level":"warn","maxRetries":2,"message":"LLM request failed","service":"watcher-daemon","timestamp":"2026-02-08T10:48:35.284Z"}
+{"attempt":2,"level":"info","message":"LLM request succeeded after retry","service":"watcher-daemon","timestamp":"2026-02-08T10:48:43.421Z"}
+{"condition":"When a new .ts file is created in src/, alert me","intent":{"eventTypes":["created"],"extensions":[".ts"],"pathIncludes":["src/"]},"level":"info","message":"Rule compiler: adjusted output to match user intent","service":"watcher-daemon","timestamp":"2026-02-08T10:48:43.429Z"}
+{"level":"info","message":"Security: Watch directory validated","path":"c:\\Users\\AKASH\\Downloads\\Kimi_Agent_Watcher Daemon Plan\\watched","service":"watcher-daemon","timestamp":"2026-02-08T14:03:48.782Z"}
+{"level":"info","message":"Rule store loaded","path":"c:\\Users\\AKASH\\Downloads\\Kimi_Agent_Watcher Daemon Plan\\data\\rules.db","rules":2,"service":"watcher-daemon","timestamp":"2026-02-08T14:03:48.827Z"}
+{"level":"info","message":"LLM health check passed","model":"tinyllama","service":"watcher-daemon","timestamp":"2026-02-08T14:03:49.072Z"}
+{"debounceMs":250,"level":"info","message":"Starting file watcher","path":"c:\\Users\\AKASH\\Downloads\\Kimi_Agent_Watcher Daemon Plan\\watched","service":"watcher-daemon","timestamp":"2026-02-08T14:03:49.072Z"}
+{"level":"info","message":"API server started","port":3000,"service":"watcher-daemon","timestamp":"2026-02-08T14:03:49.082Z"}
+{"level":"info","message":"File watcher ready","service":"watcher-daemon","timestamp":"2026-02-08T14:03:49.104Z"}
+{"level":"info","message":"Event observed","path":"tmp.txt","service":"watcher-daemon","timestamp":1770559429359,"type":"created"}
+{"level":"info","message":"Event observed","path":"src/a.ts","service":"watcher-daemon","timestamp":1770559429361,"type":"created"}
+{"level":"info","message":"Event observed","path":"src/c.ts","service":"watcher-daemon","timestamp":1770559429361,"type":"created"}
+{"level":"info","message":"Event observed","path":"src/demo.ts","service":"watcher-daemon","timestamp":1770559429362,"type":"created"}
+{"level":"info","message":"Event observed","path":"docs/readme.md","service":"watcher-daemon","timestamp":1770559429362,"type":"created"}
+{"level":"info","message":"Rule matched","ruleId":"rule_b2d05a9b-756c-4769-b76b-29a3928acff1","ruleName":"Happy-path create","service":"watcher-daemon","timestamp":"2026-02-08T14:03:49.368Z","type":"pattern"}
+{"level":"info","message":"Rule matched","ruleId":"rule_b2d05a9b-756c-4769-b76b-29a3928acff1","ruleName":"Happy-path create","service":"watcher-daemon","timestamp":"2026-02-08T14:03:49.403Z","type":"pattern"}
+{"level":"info","message":"Rule matched","ruleId":"rule_b2d05a9b-756c-4769-b76b-29a3928acff1","ruleName":"Happy-path create","service":"watcher-daemon","timestamp":"2026-02-08T14:03:49.414Z","type":"pattern"}
+{"level":"info","message":"Security: Watch directory validated","path":"c:\\Users\\AKASH\\Downloads\\Kimi_Agent_Watcher Daemon Plan\\watched","service":"watcher-daemon","timestamp":"2026-02-09T02:20:35.690Z"}
+{"level":"info","message":"Rule store loaded","path":"c:\\Users\\AKASH\\Downloads\\Kimi_Agent_Watcher Daemon Plan\\data\\rules.db","rules":2,"service":"watcher-daemon","timestamp":"2026-02-09T02:20:35.741Z"}
+{"error":"","level":"error","message":"LLM health check failed","service":"watcher-daemon","timestamp":"2026-02-09T02:20:35.823Z"}
+{"level":"warn","message":"LLM unavailable at startup - rule compilation will be disabled","service":"watcher-daemon","timestamp":"2026-02-09T02:20:35.824Z"}
+{"debounceMs":250,"level":"info","message":"Starting file watcher","path":"c:\\Users\\AKASH\\Downloads\\Kimi_Agent_Watcher Daemon Plan\\watched","service":"watcher-daemon","timestamp":"2026-02-09T02:20:35.825Z"}
+{"level":"info","message":"API server started","port":3000,"service":"watcher-daemon","timestamp":"2026-02-09T02:20:35.840Z"}
+{"level":"info","message":"File watcher ready","service":"watcher-daemon","timestamp":"2026-02-09T02:20:35.872Z"}
+{"level":"info","message":"Event observed","path":"tmp.txt","service":"watcher-daemon","timestamp":1770603636106,"type":"created"}
+{"level":"info","message":"Event observed","path":"docs/readme.md","service":"watcher-daemon","timestamp":1770603636121,"type":"created"}
+{"level":"info","message":"Event observed","path":"src/a.ts","service":"watcher-daemon","timestamp":1770603636121,"type":"created"}
+{"level":"info","message":"Event observed","path":"src/c.ts","service":"watcher-daemon","timestamp":1770603636122,"type":"created"}
+{"level":"info","message":"Event observed","path":"src/demo.ts","service":"watcher-daemon","timestamp":1770603636124,"type":"created"}
+{"level":"info","message":"Rule matched","ruleId":"rule_b2d05a9b-756c-4769-b76b-29a3928acff1","ruleName":"Happy-path create","service":"watcher-daemon","timestamp":"2026-02-09T02:20:36.128Z","type":"pattern"}
+{"level":"info","message":"Rule matched","ruleId":"rule_b2d05a9b-756c-4769-b76b-29a3928acff1","ruleName":"Happy-path create","service":"watcher-daemon","timestamp":"2026-02-09T02:20:36.162Z","type":"pattern"}
+{"level":"info","message":"Rule matched","ruleId":"rule_b2d05a9b-756c-4769-b76b-29a3928acff1","ruleName":"Happy-path create","service":"watcher-daemon","timestamp":"2026-02-09T02:20:36.174Z","type":"pattern"}
+{"level":"info","message":"Security: Watch directory validated","path":"c:\\Users\\AKASH\\Downloads\\Kimi_Agent_Watcher Daemon Plan\\watched","service":"watcher-daemon","timestamp":"2026-02-10T08:37:22.195Z"}
+{"level":"info","message":"Rule store loaded","path":"c:\\Users\\AKASH\\Downloads\\Kimi_Agent_Watcher Daemon Plan\\data\\rules.db","rules":2,"service":"watcher-daemon","timestamp":"2026-02-10T08:37:22.238Z"}
+{"level":"info","message":"LLM health check passed","model":"tinyllama","service":"watcher-daemon","timestamp":"2026-02-10T08:37:22.404Z"}
+{"debounceMs":250,"level":"info","message":"Starting file watcher","path":"c:\\Users\\AKASH\\Downloads\\Kimi_Agent_Watcher Daemon Plan\\watched","service":"watcher-daemon","timestamp":"2026-02-10T08:37:22.405Z"}
+{"level":"info","message":"API server started","port":3000,"service":"watcher-daemon","timestamp":"2026-02-10T08:37:22.416Z"}
+{"level":"info","message":"File watcher ready","service":"watcher-daemon","timestamp":"2026-02-10T08:37:22.450Z"}
+{"level":"info","message":"Event observed","path":"tmp.txt","service":"watcher-daemon","timestamp":1770712642691,"type":"created"}
+{"level":"info","message":"Event observed","path":"src/a.ts","service":"watcher-daemon","timestamp":1770712642693,"type":"created"}
+{"level":"info","message":"Event observed","path":"src/c.ts","service":"watcher-daemon","timestamp":1770712642694,"type":"created"}
+{"level":"info","message":"Event observed","path":"src/demo.ts","service":"watcher-daemon","timestamp":1770712642695,"type":"created"}
+{"level":"info","message":"Rule matched","ruleId":"rule_b2d05a9b-756c-4769-b76b-29a3928acff1","ruleName":"Happy-path create","service":"watcher-daemon","timestamp":"2026-02-10T08:37:22.698Z","type":"pattern"}
+{"level":"info","message":"Event observed","path":"docs/readme.md","service":"watcher-daemon","timestamp":1770712642728,"type":"created"}
+{"level":"info","message":"Rule matched","ruleId":"rule_b2d05a9b-756c-4769-b76b-29a3928acff1","ruleName":"Happy-path create","service":"watcher-daemon","timestamp":"2026-02-10T08:37:22.731Z","type":"pattern"}
+{"level":"info","message":"Rule matched","ruleId":"rule_b2d05a9b-756c-4769-b76b-29a3928acff1","ruleName":"Happy-path create","service":"watcher-daemon","timestamp":"2026-02-10T08:37:22.749Z","type":"pattern"}

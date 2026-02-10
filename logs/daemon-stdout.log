@@ -1,0 +1,148 @@
+[32minfo[39m: Security: Watch directory validated {"path":"c:\\Users\\AKASH\\Downloads\\Kimi_Agent_Watcher Daemon Plan\\watched","service":"watcher-daemon","timestamp":"2026-02-08T14:03:48.782Z"}
+🚀 Watcher Daemon Starting...
+
+[32minfo[39m: Rule store loaded {"path":"c:\\Users\\AKASH\\Downloads\\Kimi_Agent_Watcher Daemon Plan\\data\\rules.db","rules":2,"service":"watcher-daemon","timestamp":"2026-02-08T14:03:48.827Z"}
+[32minfo[39m: LLM health check passed {"model":"tinyllama","service":"watcher-daemon","timestamp":"2026-02-08T14:03:49.072Z"}
+[32minfo[39m: Starting file watcher {"debounceMs":250,"path":"c:\\Users\\AKASH\\Downloads\\Kimi_Agent_Watcher Daemon Plan\\watched","service":"watcher-daemon","timestamp":"2026-02-08T14:03:49.072Z"}
+✅ Daemon Running
+
+Configuration:
+  📁 Watch Directory: c:\Users\AKASH\Downloads\Kimi_Agent_Watcher Daemon Plan\watched
+  🧠 Rules Loaded: 2
+  🔔 Notifications: Enabled
+  🪵 Debounce: 250ms
+  📡 API: http://localhost:3000
+  📝 Logs: c:\Users\AKASH\Downloads\Kimi_Agent_Watcher Daemon Plan\logs\daemon.log
+
+Press Ctrl+C to stop
+
+[32minfo[39m: API server started {"port":3000,"service":"watcher-daemon","timestamp":"2026-02-08T14:03:49.082Z"}
+
+📡 API Server: http://localhost:3000
+[32minfo[39m: File watcher ready {"service":"watcher-daemon","timestamp":"2026-02-08T14:03:49.104Z"}
+[32minfo[39m: Event observed {"path":"tmp.txt","service":"watcher-daemon","timestamp":1770559429359,"type":"created"}
+[32minfo[39m: Event observed {"path":"src/a.ts","service":"watcher-daemon","timestamp":1770559429361,"type":"created"}
+[32minfo[39m: Event observed {"path":"src/c.ts","service":"watcher-daemon","timestamp":1770559429361,"type":"created"}
+[32minfo[39m: Event observed {"path":"src/demo.ts","service":"watcher-daemon","timestamp":1770559429362,"type":"created"}
+[32minfo[39m: Event observed {"path":"docs/readme.md","service":"watcher-daemon","timestamp":1770559429362,"type":"created"}
+[32minfo[39m: Rule matched {"ruleId":"rule_b2d05a9b-756c-4769-b76b-29a3928acff1","ruleName":"Happy-path create","service":"watcher-daemon","timestamp":"2026-02-08T14:03:49.368Z","type":"pattern"}
+
+============================================================
+🔔 Rule Matched: Happy-path create
+File src/a.ts was created
+============================================================
+
+[32minfo[39m: Rule matched {"ruleId":"rule_b2d05a9b-756c-4769-b76b-29a3928acff1","ruleName":"Happy-path create","service":"watcher-daemon","timestamp":"2026-02-08T14:03:49.403Z","type":"pattern"}
+
+============================================================
+🔔 Rule Matched: Happy-path create
+File src/demo.ts was created
+============================================================
+
+[32minfo[39m: Rule matched {"ruleId":"rule_b2d05a9b-756c-4769-b76b-29a3928acff1","ruleName":"Happy-path create","service":"watcher-daemon","timestamp":"2026-02-08T14:03:49.414Z","type":"pattern"}
+
+============================================================
+🔔 Rule Matched: Happy-path create
+File src/c.ts was created
+============================================================
+
+^C[32minfo[39m: Security: Watch directory validated {"path":"c:\\Users\\AKASH\\Downloads\\Kimi_Agent_Watcher Daemon Plan\\watched","service":"watcher-daemon","timestamp":"2026-02-09T02:20:35.690Z"}
+🚀 Watcher Daemon Starting...
+
+[32minfo[39m: Rule store loaded {"path":"c:\\Users\\AKASH\\Downloads\\Kimi_Agent_Watcher Daemon Plan\\data\\rules.db","rules":2,"service":"watcher-daemon","timestamp":"2026-02-09T02:20:35.741Z"}
+[31merror[39m: LLM health check failed {"error":"","service":"watcher-daemon","timestamp":"2026-02-09T02:20:35.823Z"}
+[33mwarn[39m: LLM unavailable at startup - rule compilation will be disabled {"service":"watcher-daemon","timestamp":"2026-02-09T02:20:35.824Z"}
+⚠️  LLM unavailable. Rule compilation will fail until Ollama is running.
+    Start Ollama and run: ollama pull tinyllama
+
+[32minfo[39m: Starting file watcher {"debounceMs":250,"path":"c:\\Users\\AKASH\\Downloads\\Kimi_Agent_Watcher Daemon Plan\\watched","service":"watcher-daemon","timestamp":"2026-02-09T02:20:35.825Z"}
+✅ Daemon Running
+
+Configuration:
+  📁 Watch Directory: c:\Users\AKASH\Downloads\Kimi_Agent_Watcher Daemon Plan\watched
+  🧠 Rules Loaded: 2
+  🔔 Notifications: Enabled
+  🪵 Debounce: 250ms
+  📡 API: http://localhost:3000
+  📝 Logs: c:\Users\AKASH\Downloads\Kimi_Agent_Watcher Daemon Plan\logs\daemon.log
+
+Press Ctrl+C to stop
+
+[32minfo[39m: API server started {"port":3000,"service":"watcher-daemon","timestamp":"2026-02-09T02:20:35.840Z"}
+
+📡 API Server: http://localhost:3000
+[32minfo[39m: File watcher ready {"service":"watcher-daemon","timestamp":"2026-02-09T02:20:35.872Z"}
+[32minfo[39m: Event observed {"path":"tmp.txt","service":"watcher-daemon","timestamp":1770603636106,"type":"created"}
+[32minfo[39m: Event observed {"path":"docs/readme.md","service":"watcher-daemon","timestamp":1770603636121,"type":"created"}
+[32minfo[39m: Event observed {"path":"src/a.ts","service":"watcher-daemon","timestamp":1770603636121,"type":"created"}
+[32minfo[39m: Event observed {"path":"src/c.ts","service":"watcher-daemon","timestamp":1770603636122,"type":"created"}
+[32minfo[39m: Event observed {"path":"src/demo.ts","service":"watcher-daemon","timestamp":1770603636124,"type":"created"}
+[32minfo[39m: Rule matched {"ruleId":"rule_b2d05a9b-756c-4769-b76b-29a3928acff1","ruleName":"Happy-path create","service":"watcher-daemon","timestamp":"2026-02-09T02:20:36.128Z","type":"pattern"}
+
+============================================================
+🔔 Rule Matched: Happy-path create
+File src/a.ts was created
+============================================================
+
+[32minfo[39m: Rule matched {"ruleId":"rule_b2d05a9b-756c-4769-b76b-29a3928acff1","ruleName":"Happy-path create","service":"watcher-daemon","timestamp":"2026-02-09T02:20:36.162Z","type":"pattern"}
+
+============================================================
+🔔 Rule Matched: Happy-path create
+File src/c.ts was created
+============================================================
+
+[32minfo[39m: Rule matched {"ruleId":"rule_b2d05a9b-756c-4769-b76b-29a3928acff1","ruleName":"Happy-path create","service":"watcher-daemon","timestamp":"2026-02-09T02:20:36.174Z","type":"pattern"}
+
+============================================================
+🔔 Rule Matched: Happy-path create
+File src/demo.ts was created
+============================================================
+
+[32minfo[39m: Security: Watch directory validated {"path":"c:\\Users\\AKASH\\Downloads\\Kimi_Agent_Watcher Daemon Plan\\watched","service":"watcher-daemon","timestamp":"2026-02-10T08:37:22.195Z"}
+🚀 Watcher Daemon Starting...
+
+[32minfo[39m: Rule store loaded {"path":"c:\\Users\\AKASH\\Downloads\\Kimi_Agent_Watcher Daemon Plan\\data\\rules.db","rules":2,"service":"watcher-daemon","timestamp":"2026-02-10T08:37:22.238Z"}
+[32minfo[39m: LLM health check passed {"model":"tinyllama","service":"watcher-daemon","timestamp":"2026-02-10T08:37:22.404Z"}
+[32minfo[39m: Starting file watcher {"debounceMs":250,"path":"c:\\Users\\AKASH\\Downloads\\Kimi_Agent_Watcher Daemon Plan\\watched","service":"watcher-daemon","timestamp":"2026-02-10T08:37:22.405Z"}
+✅ Daemon Running
+
+Configuration:
+  📁 Watch Directory: c:\Users\AKASH\Downloads\Kimi_Agent_Watcher Daemon Plan\watched
+  🧠 Rules Loaded: 2
+  🔔 Notifications: Enabled
+  🪵 Debounce: 250ms
+  📡 API: http://localhost:3000
+  📝 Logs: c:\Users\AKASH\Downloads\Kimi_Agent_Watcher Daemon Plan\logs\daemon.log
+
+Press Ctrl+C to stop
+
+[32minfo[39m: API server started {"port":3000,"service":"watcher-daemon","timestamp":"2026-02-10T08:37:22.416Z"}
+
+📡 API Server: http://localhost:3000
+[32minfo[39m: File watcher ready {"service":"watcher-daemon","timestamp":"2026-02-10T08:37:22.450Z"}
+[32minfo[39m: Event observed {"path":"tmp.txt","service":"watcher-daemon","timestamp":1770712642691,"type":"created"}
+[32minfo[39m: Event observed {"path":"src/a.ts","service":"watcher-daemon","timestamp":1770712642693,"type":"created"}
+[32minfo[39m: Event observed {"path":"src/c.ts","service":"watcher-daemon","timestamp":1770712642694,"type":"created"}
+[32minfo[39m: Event observed {"path":"src/demo.ts","service":"watcher-daemon","timestamp":1770712642695,"type":"created"}
+[32minfo[39m: Rule matched {"ruleId":"rule_b2d05a9b-756c-4769-b76b-29a3928acff1","ruleName":"Happy-path create","service":"watcher-daemon","timestamp":"2026-02-10T08:37:22.698Z","type":"pattern"}
+
+============================================================
+🔔 Rule Matched: Happy-path create
+File src/a.ts was created
+============================================================
+
+[32minfo[39m: Event observed {"path":"docs/readme.md","service":"watcher-daemon","timestamp":1770712642728,"type":"created"}
+[32minfo[39m: Rule matched {"ruleId":"rule_b2d05a9b-756c-4769-b76b-29a3928acff1","ruleName":"Happy-path create","service":"watcher-daemon","timestamp":"2026-02-10T08:37:22.731Z","type":"pattern"}
+
+============================================================
+🔔 Rule Matched: Happy-path create
+File src/c.ts was created
+============================================================
+
+[32minfo[39m: Rule matched {"ruleId":"rule_b2d05a9b-756c-4769-b76b-29a3928acff1","ruleName":"Happy-path create","service":"watcher-daemon","timestamp":"2026-02-10T08:37:22.749Z","type":"pattern"}
+
+============================================================
+🔔 Rule Matched: Happy-path create
+File src/demo.ts was created
+============================================================
+
