@@ -6,6 +6,8 @@ data/
 **/data/
 watched/
 **/watched/
+watched-demo-*/
+**/watched-demo-*/
 .demo-run/
 **/.demo-run/
 *.log

@@ -170,6 +170,19 @@ scripts\uninstall-startup.cmd
 - Rule Store: JSON persistence, restart-safe.
 - Notifications: console + OS notifications.
 
+## Tech Stack
+
+- **Language**: TypeScript (compiled to Node.js)
+- **Runtime**: Node.js
+- **API**: Express
+- **File watching**: Chokidar
+- **LLM**: Ollama (local, HTTP)
+- **HTTP client**: Axios
+- **Notifications**: node-notifier
+- **Logging**: Winston
+- **Persistence**: JSON file store (`data/rules.db`)
+- **UI**: Vanilla HTML/CSS/JS (local inspector)
+
 ## API (Localhost Only)
 
 - `GET /health`
